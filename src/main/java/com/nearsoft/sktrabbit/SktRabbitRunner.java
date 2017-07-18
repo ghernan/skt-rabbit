@@ -13,14 +13,13 @@ public class SktRabbitRunner implements CommandLineRunner {
     @Value("${app.client.duration:0}")
     private int duration;
 
-    @Autowired
-    private ConfigurableApplicationContext ctx;
+
 
     @Override
     public void run(String... arg0) throws Exception {
         System.out.println("Ready ... running for " + duration + "ms");
-        Thread.sleep(duration);
-        ctx.close();
+        //Thread.sleep(duration);
+        //ctx.close();
     }
 }
 
