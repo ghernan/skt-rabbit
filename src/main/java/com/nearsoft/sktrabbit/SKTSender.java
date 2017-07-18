@@ -23,17 +23,17 @@ public class SKTSender {
     @Autowired
     private ConfigurableApplicationContext ctx;
 
-    
-
+    @Value("${requests.amount:0}")
+    private int requests;
     @Scheduled(fixedDelay = 1000, initialDelay = 500)
 
     public void send()
             throws java.io.IOException {
-        Scanner reader = new Scanner(System.in);  // Reading from System.in
-        System.out.println("Set number of messages: ");
-        int n = reader.nextInt();
+//        Scanner reader = new Scanner(System.in);  // Reading from System.in
+//        System.out.println("Set number of messages: ");
+//        int n = reader.nextInt();
         ObjectMapper mapper = new ObjectMapper();
-        for (int i=1; i <= n; i++ ){
+        for (int i=1; i <= requests; i++ ){
             SKTmessage message =  new SKTmessage(""+i, "this is message "+ i);
             String jsonMessage = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(message);
             this.template.convertAndSend(queue.getName(), jsonMessage);
