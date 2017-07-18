@@ -3,12 +3,16 @@ package com.nearsoft.sktrabbit.models;
 /**
  * Created by antoniohernandez on 7/17/17.
  */
-public class Message {
+public class SKTmessage {
 
     private String title;
     private String content;
 
-    public Message(String title, String content) {
+    public SKTmessage() {
+
+    }
+
+    public SKTmessage(String title, String content) {
         setContent(content);
         setTitle(title);
     }
@@ -27,5 +31,11 @@ public class Message {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String toString() {
+
+        return "SKTmessage [ title: " + this.title + ", content: " + this.content + "]";
+
     }
 }
