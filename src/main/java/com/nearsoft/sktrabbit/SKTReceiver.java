@@ -11,15 +11,14 @@ import java.util.concurrent.TimeoutException;
 /**
  * Created by antoniohernandez on 7/17/17.
  */
-@RabbitListener(queues = "SKT")
+@RabbitListener(queues = "Sky")
 
 public class SKTReceiver {
 
     @RabbitHandler
     public void receive(String in) {
-
+        ObjectMapper mapper = new ObjectMapper();
         try {
-            ObjectMapper mapper = new ObjectMapper();
             SKTmessage message = mapper.readValue(in, SKTmessage.class);
             System.out.println(" [x] Received '" + message.toString() + "'");
         } catch (IOException e) {

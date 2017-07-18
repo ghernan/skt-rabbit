@@ -26,7 +26,7 @@ public class SktRabbitApplication {
 			@Override
 			public void run(String... arg0) throws Exception {
 				System.out.println("This app uses Spring Profiles to control its behavior.\n");
-				System.out.println("Sample usage: java -jar skt-rabbit.jar --spring.profiles.active=hello-world,sender");
+				System.out.println("Sample usage: java -jar skt-rabbit.jar --spring.profiles.active=sender");
 			}
 		};
 	}

@@ -1,5 +1,7 @@
 package com.nearsoft.sktrabbit.models;
 
+import java.io.Serializable;
+
 /**
  * Created by antoniohernandez on 7/17/17.
  */
