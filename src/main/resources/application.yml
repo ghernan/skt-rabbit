@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: usage_message
+  rabbitmq:
+     addresses: localhost:4030
+
+logging:
+  level:
+    org: ERROR
+
+app:
+  client:
+    duration: 10000
+

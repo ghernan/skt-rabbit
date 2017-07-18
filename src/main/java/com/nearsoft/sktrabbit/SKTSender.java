@@ -3,6 +3,10 @@ package com.nearsoft.sktrabbit;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.amqp.core.Queue;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import java.util.concurrent.TimeoutException;
 
@@ -11,32 +15,18 @@ import java.util.concurrent.TimeoutException;
  */
 public class SKTSender {
 
-    private final static String QUEUE_NAME = "hello";
+    @Autowired
+    private RabbitTemplate template;
+    @Autowired
+    private Queue queue;
 
-    public static void main(String[] argv)
+    @Scheduled(fixedDelay = 1000, initialDelay = 500)
+
+    public void send()
             throws java.io.IOException {
 
-        try {
-            ConnectionFactory factory = new ConnectionFactory();
-            factory.setHost("localhost");
-            factory.setPort(4030);
-            Connection connection =  factory.newConnection();
-
-            Channel channel = connection.createChannel();
-
-            channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-            String message = "Hello World! "+ connection.getPort();
-            channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
-            System.out.println(" [x] Sent '" + message + "'");
-            channel.close();
-            connection.close();
-
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        }
-
-
+        String message = "Hello World!";
+        this.template.convertAndSend(queue.getName(), message);
+        System.out.println(" [x] Sent '" + message + "'");
     }
-
-
 }
