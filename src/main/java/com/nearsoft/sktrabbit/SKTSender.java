@@ -4,6 +4,7 @@ import com.nearsoft.sktrabbit.models.SKTmessage;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.amqp.core.Queue;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.scheduling.annotation.Scheduled;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,6 +22,8 @@ public class SKTSender {
     private Queue queue;
     @Autowired
     private ConfigurableApplicationContext ctx;
+
+    
 
     @Scheduled(fixedDelay = 1000, initialDelay = 500)
 

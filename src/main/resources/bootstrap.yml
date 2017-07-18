@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: usage_message
+
+  cloud:
+      config:
+        env: default # optional
+        label: master # optional
+        uri: http://localhost:8888
+        username: root
+        password: root # optional
+
+logging:
+  level:
+    org: ERROR
+
+app:
+  client:
+    duration: 10000
+
