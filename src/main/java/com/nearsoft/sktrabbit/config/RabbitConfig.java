@@ -16,7 +16,7 @@ public class RabbitConfig {
 
     @Bean
     public Queue hello() {
-        return new Queue("Sky");
+        return new Queue("AB");
     }
 
 }

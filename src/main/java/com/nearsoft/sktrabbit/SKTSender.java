@@ -16,8 +16,7 @@ import java.util.Scanner;
  */
 public class SKTSender {
 
-    @Autowired
-    private RabbitTemplate template;
+
     @Autowired
     private Queue queue;
     @Autowired
@@ -27,14 +26,14 @@ public class SKTSender {
     private int requests;
     @Scheduled(fixedDelay = 1000, initialDelay = 500)
 
-    public void send()
-            throws java.io.IOException {
+    public void send() throws java.io.IOException {
 
-        ObjectMapper mapper = new ObjectMapper();
+        RabbitTemplate rabbitTemplate = ctx.getBean(RabbitTemplate.class);
+
         for (int i=1; i <= requests; i++ ){
+
             SKTmessage message =  new SKTmessage(""+i, "this is message "+ i);
-            String jsonMessage = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(message);
-            this.template.convertAndSend(queue.getName(), jsonMessage);
+            rabbitTemplate.convertAndSend(queue.getName(), message);
             System.out.println(" [x] Sent '" + message.toString() + "'");
         }
         ctx.close();

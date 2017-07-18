@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by antoniohernandez on 7/17/17.
  */
-public class SKTmessage {
+public class SKTmessage extends Object {
 
     private String title;
     private String content;
