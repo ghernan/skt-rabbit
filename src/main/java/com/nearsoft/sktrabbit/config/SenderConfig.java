@@ -18,8 +18,7 @@ import org.springframework.amqp.core.Queue;
 @Profile("sender")
 public class SenderConfig {
 
-    @Autowired
-    private Queue queue;
+
     @Autowired
     private ConnectionFactory factory;
 

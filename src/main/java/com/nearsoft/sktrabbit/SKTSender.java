@@ -22,8 +22,8 @@ public class SKTSender {
 
     @Value("${requests.amount:0}")
     private int requests;
-    @Scheduled(fixedDelay = 1000, initialDelay = 500)
 
+    @Scheduled(fixedDelay = 1000, initialDelay = 500)
     public void send() throws java.io.IOException {
 
         RabbitTemplate rabbitTemplate = ctx.getBean(RabbitTemplate.class);
