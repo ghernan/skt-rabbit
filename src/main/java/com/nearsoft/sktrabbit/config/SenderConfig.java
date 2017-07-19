@@ -1,7 +1,6 @@
 package com.nearsoft.sktrabbit.config;
 
 import com.nearsoft.sktrabbit.SKTSender;
-import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.JsonMessageConverter;

@@ -2,14 +2,8 @@ package com.nearsoft.sktrabbit;
 
 
 import com.nearsoft.sktrabbit.models.SKTmessage;
-import com.rabbitmq.client.*;
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
 
 /**
  * Created by antoniohernandez on 7/17/17.
